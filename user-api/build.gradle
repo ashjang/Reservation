@@ -29,6 +29,7 @@ dependencies {
     implementation 'mysql:mysql-connector-java'
 
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'org.springframework.data:spring-data-envers'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

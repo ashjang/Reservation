@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SignUpController {
 
     private final CustomerSignUpService customerSignUpService;
-    
+
+    @ApiOperation(value = "고객용 회원가입", response = String.class)
     @PostMapping("/customer")
     public ResponseEntity<String> customerSignUp(@RequestBody SignUpForm signUpForm) {
         return ResponseEntity.ok(customerSignUpService.signUp(signUpForm));

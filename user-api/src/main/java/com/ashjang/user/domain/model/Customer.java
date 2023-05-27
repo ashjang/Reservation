@@ -19,7 +19,7 @@ public class Customer extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nickName;
+    private String name;
 
     @Column(unique = true)
     private String phone;
@@ -28,7 +28,7 @@ public class Customer extends BaseEntity {
 
     public static Customer from(SignUpForm signUpForm) {
         return Customer.builder()
-                .nickName(signUpForm.getNickName())
+                .name(signUpForm.getName())
                 .phone(signUpForm.getPhone())
                 .password(signUpForm.getPassword())
                 .build();

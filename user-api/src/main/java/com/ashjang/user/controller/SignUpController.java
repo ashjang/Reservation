@@ -20,6 +20,7 @@ public class SignUpController {
     @ApiOperation(value = "고객용 회원가입", response = String.class)
     @PostMapping("/customer")
     public ResponseEntity<String> customerSignUp(@RequestBody SignUpForm signUpForm) {
+        System.out.println("git test");
         return ResponseEntity.ok(customerSignUpService.signUp(signUpForm));
     }
 }

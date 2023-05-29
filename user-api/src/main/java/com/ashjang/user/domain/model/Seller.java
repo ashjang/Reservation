@@ -15,6 +15,7 @@ import javax.persistence.*;
 @AuditOverride(forClass = BaseEntity.class)
 public class Seller extends BaseEntity{
     @Id
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

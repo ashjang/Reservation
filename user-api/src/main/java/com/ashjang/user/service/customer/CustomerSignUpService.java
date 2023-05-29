@@ -6,10 +6,11 @@ import com.ashjang.user.domain.repository.CustomerRepository;
 import com.ashjang.user.exception.CustomException;
 import com.ashjang.user.exception.ErrorCode;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomerSignUpService {
 
     private final CustomerRepository customerRepository;

@@ -1,4 +1,4 @@
-package com.ashjang.user.domain.token;
+package com.ashjang.domain.token;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 

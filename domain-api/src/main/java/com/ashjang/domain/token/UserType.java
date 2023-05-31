@@ -1,4 +1,4 @@
-package com.ashjang.user.domain.token;
+package com.ashjang.domain.token;
 
 public enum UserType {
     CUSTOMER, SELLER;

@@ -1,6 +1,6 @@
 package com.ashjang.user.config;
 
-import com.ashjang.user.domain.token.JwtProvider;
+import com.ashjang.domain.token.JwtProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

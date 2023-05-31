@@ -1,4 +1,4 @@
-package com.ashjang.user.domain.token;
+package com.ashjang.domain.token;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

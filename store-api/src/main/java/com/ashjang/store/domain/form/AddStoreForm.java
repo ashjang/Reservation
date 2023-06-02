@@ -1,4 +1,4 @@
-package com.ashjang.store.domain;
+package com.ashjang.store.domain.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

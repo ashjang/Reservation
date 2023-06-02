@@ -1,11 +1,12 @@
 package com.ashjang.store.controller;
 
-import com.ashjang.domain.exception.CustomException;
-import com.ashjang.domain.exception.ErrorCode;
 import com.ashjang.domain.token.JwtProvider;
 import com.ashjang.domain.token.UserVo;
-import com.ashjang.store.domain.AddStoreForm;
+import com.ashjang.store.domain.form.AddStoreForm;
 import com.ashjang.store.domain.dto.StoreDto;
+import com.ashjang.store.domain.form.UpdateStoreForm;
+import com.ashjang.store.exception.CustomException;
+import com.ashjang.store.exception.ErrorCode;
 import com.ashjang.store.service.SellerStoreService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class SellerStoreController {
     private final JwtProvider jwtProvider;
 
     @ApiOperation(value = "상점 추가", response = StoreDto.class)
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<StoreDto> addStore(@RequestHeader(name = "X-AUTH-TOKEN") String token,
                                              @RequestBody AddStoreForm addStoreForm) {
         UserVo userVo = jwtProvider.getUserVo(token);
@@ -29,7 +30,18 @@ public class SellerStoreController {
         }
 
         return ResponseEntity.ok(
-                StoreDto.from(sellerStoreService.addStore(userVo.getId(), addStoreForm))
+                StoreDto.from(sellerStoreService.addStore(userVo.getUserId(), addStoreForm))
+        );
+    }
+
+    @ApiOperation(value = "상품 수정", response = StoreDto.class)
+    @PutMapping("/update")
+    public ResponseEntity<StoreDto> updateStore(@RequestHeader(name = "X-AUTH-TOKEN") String token,
+                                                @RequestBody UpdateStoreForm updateStoreForm) {
+        UserVo userVo = jwtProvider.getUserVo(token);
+
+        return ResponseEntity.ok(
+                StoreDto.from(sellerStoreService.updateStore(userVo.getUserId(), updateStoreForm))
         );
     }
 }

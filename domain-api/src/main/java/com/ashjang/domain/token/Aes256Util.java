@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Aes256Util {
     public static String alg = "AES/CBC/PKCS5Padding";
-    private static final String KEY = "RESERVATIONAPPJWTUSINGENCRYPTDECRYPT";
+    private static final String KEY = "RESERVATIONAPPJWTUSINGENCRYPTDEC";
     private static final String IV = KEY.substring(0,16);
 
     public static String encrypt(String text) {

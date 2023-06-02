@@ -3,8 +3,8 @@ package com.ashjang.user.service.seller;
 import com.ashjang.user.domain.SignUpForm;
 import com.ashjang.user.domain.model.Seller;
 import com.ashjang.user.domain.repository.SellerRepository;
-import com.ashjang.user.exception.CustomException;
-import com.ashjang.user.exception.ErrorCode;
+import com.ashjang.domain.exception.CustomException;
+import com.ashjang.domain.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

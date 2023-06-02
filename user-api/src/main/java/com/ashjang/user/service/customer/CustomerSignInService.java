@@ -5,8 +5,8 @@ import com.ashjang.user.domain.model.Customer;
 import com.ashjang.user.domain.repository.CustomerRepository;
 import com.ashjang.domain.token.JwtProvider;
 import com.ashjang.domain.token.UserType;
-import com.ashjang.user.exception.CustomException;
-import com.ashjang.user.exception.ErrorCode;
+import com.ashjang.domain.exception.CustomException;
+import com.ashjang.domain.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

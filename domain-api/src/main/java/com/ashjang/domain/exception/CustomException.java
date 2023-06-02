@@ -1,4 +1,4 @@
-package com.ashjang.user.exception;
+package com.ashjang.domain.exception;
 
 import lombok.Getter;
 

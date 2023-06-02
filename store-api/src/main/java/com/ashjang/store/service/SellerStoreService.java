@@ -16,6 +16,5 @@ public class SellerStoreService {
     @Transactional
     public Store addStore(Long sellerId, AddStoreForm addStoreForm) {
         return storeRepository.save(Store.from(sellerId, addStoreForm));
-
     }
 }

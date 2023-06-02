@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class JwtProvider {
     private String secretKey = "thisIsNotVisibleToTheCLIENT";
@@ -38,4 +39,8 @@ public class JwtProvider {
         }
     }
 
+    public UserVo getUserVo(String token) {
+        Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        return new UserVo(Long.valueOf(Objects.requireNonNull(Aes256Util.decrypt(claims.getId()))), Aes256Util.decrypt(claims.getSubject()));
+    }
 }

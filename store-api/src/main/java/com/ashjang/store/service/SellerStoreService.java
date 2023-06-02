@@ -37,4 +37,12 @@ public class SellerStoreService {
 
         return store;
     }
+
+    // 상품 삭제
+    @Transactional
+    public void deleteStore(Long sellerId, Long storeId) {
+        Store store = storeRepository.findBySellerIdAndId(sellerId, storeId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
+        storeRepository.delete(store);
+    }
 }

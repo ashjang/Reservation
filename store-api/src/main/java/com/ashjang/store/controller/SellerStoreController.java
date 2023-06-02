@@ -34,7 +34,7 @@ public class SellerStoreController {
         );
     }
 
-    @ApiOperation(value = "상품 수정", response = StoreDto.class)
+    @ApiOperation(value = "상점 수정", response = StoreDto.class)
     @PutMapping("/update")
     public ResponseEntity<StoreDto> updateStore(@RequestHeader(name = "X-AUTH-TOKEN") String token,
                                                 @RequestBody UpdateStoreForm updateStoreForm) {
@@ -43,5 +43,13 @@ public class SellerStoreController {
         return ResponseEntity.ok(
                 StoreDto.from(sellerStoreService.updateStore(userVo.getUserId(), updateStoreForm))
         );
+    }
+
+    @ApiOperation(value = "상점 삭제", response = String.class)
+    @DeleteMapping
+    public ResponseEntity<Void> deleteStore(@RequestHeader(name = "X-AUTH-TOKEN") String token,
+                                            @RequestParam Long storeId) {
+        sellerStoreService.deleteStore(jwtProvider.getUserVo(token).getUserId(), storeId);
+        return ResponseEntity.ok().build();
     }
 }

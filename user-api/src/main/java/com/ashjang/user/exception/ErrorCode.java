@@ -1,4 +1,4 @@
-package com.ashjang.domain.exception;
+package com.ashjang.user.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +12,6 @@ public enum ErrorCode {
 
     // 로그인
     SIGNIN_FAILED(HttpStatus.BAD_REQUEST, "아이디와 비밀번호를 다시 확인해주세요."),
-
-    // 권한 없음
-    NO_ACCESS_USER(HttpStatus.BAD_REQUEST, "접근 권한이 없습니다.")
     ;
 
     private final HttpStatus httpStatus;

@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class UserVo {
-    private Long id;
+    private Long userId;
     private String phone;
     private String userType;
 }

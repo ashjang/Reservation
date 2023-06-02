@@ -1,6 +1,6 @@
 package com.ashjang.store.domain.model;
 
-import com.ashjang.store.domain.AddStoreForm;
+import com.ashjang.store.domain.form.AddStoreForm;
 import lombok.*;
 import org.hibernate.envers.AuditOverride;
 

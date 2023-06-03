@@ -27,12 +27,15 @@ public class Store extends BaseEntity {
 
     private Long sellerId;
 
+    private Double star;
+
     public static Store from(Long sellerId, AddStoreForm addStoreForm) {
         return Store.builder()
                 .name(addStoreForm.getName())
                 .location(addStoreForm.getLocation())
                 .description(addStoreForm.getDescription())
                 .sellerId(sellerId)
+                .star(0.0)
                 .build();
     }
 }

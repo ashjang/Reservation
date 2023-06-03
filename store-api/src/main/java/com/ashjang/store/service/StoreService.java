@@ -39,4 +39,14 @@ public class StoreService {
 
         return storeList;
     }
+
+    // 상점 목록 - 별점 높은 순서대로
+    public List<Store> sortedByStar() {
+        List<Store> storeList = storeRepository.sortedByStar();
+        if (storeList.isEmpty()) {
+            throw new CustomException(ErrorCode.NOT_FOUND_STORE);
+        }
+
+        return storeList;
+    }
 }

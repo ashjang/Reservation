@@ -1,9 +1,11 @@
 package com.ashjang.store.domain.repository;
 
+import com.ashjang.domain.location.LocationProvider;
 import com.ashjang.store.domain.model.QStore;
 import com.ashjang.store.domain.model.Store;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

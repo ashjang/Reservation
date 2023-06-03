@@ -53,4 +53,13 @@ public class StoreController {
                         .map(StoreDto::from).collect(Collectors.toList())
         );
     }
+
+    @ApiOperation(value = "거리 순으로 정렬된 상점 목록", response = List.class)
+    @GetMapping("/byDistance")
+    public ResponseEntity<List<StoreDto>> sortedByDistance(@RequestParam("myLat") double myLat, @RequestParam("myLng") double myLnt) {
+        return ResponseEntity.ok(
+                storeService.sortedByDistance(myLat, myLnt).stream()
+                        .map(StoreDto::from).collect(Collectors.toList())
+        );
+    }
 }

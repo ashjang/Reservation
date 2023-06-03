@@ -29,6 +29,8 @@ public class Store extends BaseEntity {
 
     private Double star;
 
+    private boolean possibleUse;
+
     public static Store from(Long sellerId, AddStoreForm addStoreForm) {
         return Store.builder()
                 .name(addStoreForm.getName())
@@ -36,6 +38,7 @@ public class Store extends BaseEntity {
                 .description(addStoreForm.getDescription())
                 .sellerId(sellerId)
                 .star(0.0)
+                .possibleUse(true)
                 .build();
     }
 }

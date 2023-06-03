@@ -30,4 +30,12 @@ public class StoreRepositoryImpl implements StoreRepositoryCustom {
                 .orderBy(qStore.name.asc())
                 .fetch();
     }
+
+    @Override
+    public List<Store> sortedByStar() {
+        QStore qStore = QStore.store;
+        return queryFactory.selectFrom(qStore)
+                .orderBy(qStore.star.desc())
+                .fetch();
+    }
 }

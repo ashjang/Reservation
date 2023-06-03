@@ -29,4 +29,14 @@ public class StoreService {
         return storeRepository.findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
     }
+
+    // 상점 목록 - 가나다순
+    public List<Store> sortedByName() {
+        List<Store> storeList = storeRepository.sortedByName();
+        if (storeList.isEmpty()) {
+            throw new CustomException(ErrorCode.NOT_FOUND_STORE);
+        }
+
+        return storeList;
+    }
 }

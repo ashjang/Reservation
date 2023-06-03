@@ -22,4 +22,12 @@ public class StoreRepositoryImpl implements StoreRepositoryCustom {
                 .where(qStore.name.like(search))
                 .fetch();
     }
+
+    @Override
+    public List<Store> sortedByName() {
+        QStore qStore = QStore.store;
+        return queryFactory.selectFrom(qStore)
+                .orderBy(qStore.name.asc())
+                .fetch();
+    }
 }

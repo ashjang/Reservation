@@ -12,7 +12,7 @@ public enum ErrorCode {
 
     // 상점
     ALREADY_EXISTS(HttpStatus.BAD_REQUEST, "이미 존재하는 이름입니다."),
-    NOT_FOUND_STORE(HttpStatus.BAD_REQUEST, "일치하는 상점이 없습니다.")
+    NOT_FOUND_STORE(HttpStatus.BAD_REQUEST, "등록된 상점이 없습니다.")
     ;
 
     private final HttpStatus httpStatus;

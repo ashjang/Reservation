@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface StoreRepositoryCustom {
     List<Store> searchByName(String name);
+
+    List<Store> sortedByName();
 }

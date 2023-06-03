@@ -35,4 +35,13 @@ public class StoreController {
                 StoreDto.from(storeService.getDetail(storeId))
         );
     }
+
+    @ApiOperation(value = "이름순으로 정렬된 상점 목록", response = List.class)
+    @GetMapping("/byName")
+    public ResponseEntity<List<StoreDto>> sortedByName() {
+        return ResponseEntity.ok(
+                storeService.sortedByName().stream()
+                        .map(StoreDto::from).collect(Collectors.toList())
+        );
+    }
 }

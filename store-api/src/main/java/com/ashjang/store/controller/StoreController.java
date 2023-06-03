@@ -27,4 +27,12 @@ public class StoreController {
                         .map(StoreDto::from).collect(Collectors.toList())
         );
     }
+
+    @ApiOperation(value = "상세 정보 보기", response = List.class)
+    @GetMapping("/detail")
+    public ResponseEntity<StoreDto> getDetail(@RequestParam Long storeId) {
+        return ResponseEntity.ok(
+                StoreDto.from(storeService.getDetail(storeId))
+        );
+    }
 }

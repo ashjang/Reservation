@@ -11,4 +11,5 @@ public class UpdateStoreForm {
     private String name;
     private String location;
     private String description;
+    private boolean possibleUse;
 }

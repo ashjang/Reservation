@@ -34,6 +34,7 @@ public class SellerStoreService {
         store.setName(updateStoreForm.getName());
         store.setLocation(updateStoreForm.getLocation());
         store.setDescription(updateStoreForm.getDescription());
+        store.setPossibleUse(updateStoreForm.isPossibleUse());
 
         return store;
     }

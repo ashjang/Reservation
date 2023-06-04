@@ -30,6 +30,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'mysql:mysql-connector-java'
 
+
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'org.springframework.data:spring-data-envers'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'

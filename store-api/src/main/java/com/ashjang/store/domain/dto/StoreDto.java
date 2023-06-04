@@ -14,6 +14,7 @@ public class StoreDto {
     private String location;
     private String description;
     private Double star;
+    private boolean possibleUse;
 
     public static StoreDto from(Store store) {
         return StoreDto.builder()
@@ -22,6 +23,7 @@ public class StoreDto {
                 .location(store.getLocation())
                 .description(store.getDescription())
                 .star(store.getStar())
+                .possibleUse(store.isPossibleUse())
                 .build();
     }
 }

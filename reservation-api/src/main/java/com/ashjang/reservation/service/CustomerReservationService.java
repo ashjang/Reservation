@@ -9,6 +9,7 @@ import com.ashjang.reservation.exception.CustomException;
 import com.ashjang.reservation.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,4 +27,17 @@ public class CustomerReservationService {
         return reservationRepository.save(Reservation.from(reserveForm, userPhone));
     }
 
+    // 고객 - 도착알림
+    @Transactional
+    public String checkArrived(String userPhone, Long reservationId) {
+        Reservation reservation = reservationRepository.findByPhoneAndId(userPhone, reservationId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_CORRECT_RESERVE));
+
+        if (reservation.isUsedRv()) {
+            return "이미 도착 확인되었습니다.";
+        }
+
+        reservation.setUsedRv(true);
+        return "도착 확인되었습니다.";
+    }
 }

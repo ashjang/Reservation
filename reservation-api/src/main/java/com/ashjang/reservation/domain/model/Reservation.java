@@ -1,9 +1,7 @@
 package com.ashjang.reservation.domain.model;
 
 import com.ashjang.reservation.domain.AddReserveForm;
-import com.ashjang.reservation.domain.dto.StoreDto;
 import lombok.*;
-import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +26,7 @@ public class Reservation {
 
     private LocalDate reserveDate;
     private LocalTime reserveTime;
+    private boolean usedRv;
 
     public static Reservation from(AddReserveForm form, String phone) {
         LocalDate date = LocalDate.of(form.getYear(), form.getMonth(), form.getDay());
@@ -38,6 +37,7 @@ public class Reservation {
                 .storeId(form.getStoreId())
                 .reserveDate(date)
                 .reserveTime(time)
+                .usedRv(false)
                 .build();
     }
 }

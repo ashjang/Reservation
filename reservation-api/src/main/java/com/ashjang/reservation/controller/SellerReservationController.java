@@ -21,7 +21,7 @@ public class SellerReservationController {
     private final SellerReservationService sellerReservationService;
     private final JwtProvider jwtProvider;
 
-    @ApiOperation(value = "셀러용 예약확인", response = List.class)
+    @ApiOperation(value = "셀러용 예약확인 - 날짜 시간별", response = List.class)
     @GetMapping
     public ResponseEntity<List<ReservationDto>> getReservations(@RequestHeader(name = "X-AUTH-TOKEN") String token,
                                                                 @RequestParam("storeId") Long storeId) {

@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerReservationService {
@@ -39,5 +41,24 @@ public class CustomerReservationService {
 
         reservation.setUsedRv(true);
         return "도착 확인되었습니다.";
+    }
+
+    // 고객 - 사용완료
+    public List<Reservation> getUsedReservation(String phone) {
+        List<Reservation> reservations = reservationRepository.findAllByPhoneAndUsedRvIsTrue(phone);
+        if (reservations.isEmpty()) {
+            throw new CustomException(ErrorCode.CANNOT_VERIFY_RESERVATION);
+        }
+
+        return reservations;
+    }
+
+    // 고객 - 리뷰완료
+    @Transactional
+    public boolean setReviewedReservation(Long rvId) {
+        Reservation reservation = reservationRepository.findById(rvId)
+                .orElseThrow(() -> new CustomException(ErrorCode.CANNOT_VERIFY_RESERVATION));
+        reservation.setReviewed(true);
+        return true;
     }
 }

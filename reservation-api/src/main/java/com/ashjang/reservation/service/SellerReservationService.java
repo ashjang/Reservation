@@ -1,8 +1,6 @@
 package com.ashjang.reservation.service;
 
 import com.ashjang.reservation.client.UserClient;
-import com.ashjang.reservation.domain.dto.ReservationDto;
-import com.ashjang.reservation.domain.dto.StoreDto;
 import com.ashjang.reservation.domain.model.Reservation;
 import com.ashjang.reservation.domain.repository.ReservationRepository;
 import com.ashjang.reservation.exception.CustomException;
@@ -24,7 +22,7 @@ public class SellerReservationService {
         // storeId로 예약된 목록
         List<Reservation> reservations = reservationRepository.findAllByStoreId(storeId);
         if (reservations.isEmpty()) {
-            throw new CustomException(ErrorCode.CANNOT_VERIFY);
+            throw new CustomException(ErrorCode.CANNOT_VERIFY_RESERVATION);
         }
 
         if (userClient.getStore(token, storeId).getBody() == null) {

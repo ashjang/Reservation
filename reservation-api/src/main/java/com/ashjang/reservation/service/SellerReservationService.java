@@ -1,6 +1,7 @@
 package com.ashjang.reservation.service;
 
 import com.ashjang.reservation.client.UserClient;
+import com.ashjang.reservation.domain.dto.ReservationDto;
 import com.ashjang.reservation.domain.dto.StoreDto;
 import com.ashjang.reservation.domain.model.Reservation;
 import com.ashjang.reservation.domain.repository.ReservationRepository;
@@ -9,6 +10,7 @@ import com.ashjang.reservation.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -29,6 +31,9 @@ public class SellerReservationService {
             throw new CustomException(ErrorCode.NO_ACCESS);
         }
 
+        reservations.sort(Comparator.comparing(Reservation::getReserveDate));
+        reservations.sort(Comparator.comparing(Reservation::getReserveDate)
+                .thenComparing(Reservation::getReserveTime));
         return reservations;
     }
 }

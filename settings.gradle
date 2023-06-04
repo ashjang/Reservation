@@ -3,4 +3,5 @@ include 'user-api'
 include 'store-api'
 include 'domain-api'
 include 'reservation-api'
+include 'review-api'
 

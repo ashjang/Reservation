@@ -4,6 +4,7 @@ import com.ashjang.domain.token.JwtProvider;
 import com.ashjang.domain.token.UserVo;
 import com.ashjang.reservation.domain.AddReserveForm;
 import com.ashjang.reservation.domain.dto.ReservationDto;
+import com.ashjang.reservation.domain.model.Reservation;
 import com.ashjang.reservation.exception.CustomException;
 import com.ashjang.reservation.exception.ErrorCode;
 import com.ashjang.reservation.service.CustomerReservationService;
@@ -11,6 +12,9 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -43,6 +47,20 @@ public class CustomerReservationController {
 
         return ResponseEntity.ok(
                 customerService.checkArrived(userVo.getPhone(), reservationId)
+        );
+    }
+
+    @ApiOperation(value = "고객의 사용한 예약", response = List.class)
+    @GetMapping("/use")
+    public ResponseEntity<List<ReservationDto>> usedReservation(@RequestHeader(name = "X-AUTH-TOKEN") String token) {
+        UserVo userVo = jwtProvider.getUserVo(token);
+        if (!userVo.getUserType().equals("CUSTOMER")) {
+            throw new CustomException(ErrorCode.NO_ACCESS_USER);
+        }
+
+        return ResponseEntity.ok(
+                customerService.getUsedReservation(userVo.getPhone()).stream()
+                        .map(ReservationDto::from).collect(Collectors.toList())
         );
     }
 }

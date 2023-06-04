@@ -28,7 +28,7 @@ public class SellerStoreService {
     // 상점 수정
     @Transactional
     public Store updateStore(Long sellerId, UpdateStoreForm updateStoreForm) {
-        Store store = storeRepository.findBySellerIdAndId(sellerId, updateStoreForm.getId())
+        Store store = storeRepository.findBySellerIdAndId(sellerId, updateStoreForm.getStoreId())
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
 
         store.setName(updateStoreForm.getName());

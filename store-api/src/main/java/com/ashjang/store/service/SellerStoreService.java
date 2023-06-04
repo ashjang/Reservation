@@ -1,5 +1,6 @@
 package com.ashjang.store.service;
 
+import com.ashjang.store.domain.dto.StoreDto;
 import com.ashjang.store.domain.form.AddStoreForm;
 import com.ashjang.store.domain.form.UpdateStoreForm;
 import com.ashjang.store.domain.model.Store;
@@ -45,5 +46,10 @@ public class SellerStoreService {
         Store store = storeRepository.findBySellerIdAndId(sellerId, storeId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
         storeRepository.delete(store);
+    }
+
+    public Store getStore(Long sellerId, Long storeId) {
+        return storeRepository.findBySellerIdAndId(sellerId, storeId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
     }
 }

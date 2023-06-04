@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateStoreForm {
-    private Long id;
+    private Long storeId;
     private String name;
     private String location;
     private String description;

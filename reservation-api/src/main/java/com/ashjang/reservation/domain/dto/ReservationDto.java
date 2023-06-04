@@ -17,6 +17,7 @@ public class ReservationDto {
     private LocalDate reserveDate;
     private LocalTime reserveTime;
     private String phone;
+    private boolean usedRv;
 
     public static ReservationDto from(Reservation reservation) {
         return ReservationDto.builder()
@@ -25,6 +26,7 @@ public class ReservationDto {
                 .reserveDate(reservation.getReserveDate())
                 .reserveTime(reservation.getReserveTime())
                 .phone(reservation.getPhone())
+                .usedRv(reservation.isUsedRv())
                 .build();
     }
 }

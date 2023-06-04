@@ -27,6 +27,7 @@ public class Reservation {
     private LocalDate reserveDate;
     private LocalTime reserveTime;
     private boolean usedRv;
+    private boolean reviewed;
 
     public static Reservation from(AddReserveForm form, String phone) {
         LocalDate date = LocalDate.of(form.getYear(), form.getMonth(), form.getDay());
@@ -38,6 +39,7 @@ public class Reservation {
                 .reserveDate(date)
                 .reserveTime(time)
                 .usedRv(false)
+                .reviewed(false)
                 .build();
     }
 }

@@ -1,9 +1,10 @@
-package com.ashjang.review.domain;
+package com.ashjang.review.domain.dto;
 
 import lombok.Getter;
 
 @Getter
 public class AddReviewForm {
-    private String title;
+    private Long storeId;
+    private Double star;
     private String contents;
 }

@@ -52,4 +52,13 @@ public class CustomerReservationService {
 
         return reservations;
     }
+
+    // 고객 - 리뷰완료
+    @Transactional
+    public boolean setReviewedReservation(Long rvId) {
+        Reservation reservation = reservationRepository.findById(rvId)
+                .orElseThrow(() -> new CustomException(ErrorCode.CANNOT_VERIFY_RESERVATION));
+        reservation.setReviewed(true);
+        return true;
+    }
 }

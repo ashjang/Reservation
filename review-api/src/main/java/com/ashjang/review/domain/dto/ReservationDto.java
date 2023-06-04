@@ -1,4 +1,4 @@
-package com.ashjang.review.domain;
+package com.ashjang.review.domain.dto;
 
 import lombok.*;
 
@@ -17,4 +17,5 @@ public class ReservationDto {
     private LocalTime reserveTime;
     private String phone;
     private boolean usedRv;
+    private boolean reviewed;
 }

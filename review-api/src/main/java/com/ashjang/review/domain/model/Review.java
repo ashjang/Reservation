@@ -1,6 +1,6 @@
 package com.ashjang.review.domain.model;
 
-import com.ashjang.review.domain.AddReviewForm;
+import com.ashjang.review.domain.dto.AddReviewForm;
 import lombok.*;
 import org.hibernate.envers.AuditOverride;
 
@@ -23,14 +23,14 @@ public class Review extends BaseEntity {
 
     private Long customerId;
     private Long storeId;
-    private String title;
+    private Double star;
     private String contents;
 
-    public static Review from(AddReviewForm addReviewForm, Long customerId, Long storeId) {
+    public static Review from(AddReviewForm addReviewForm, Long customerId) {
         return Review.builder()
                 .customerId(customerId)
-                .storeId(storeId)
-                .title(addReviewForm.getTitle())
+                .storeId(addReviewForm.getStoreId())
+                .star(addReviewForm.getStar())
                 .contents(addReviewForm.getContents())
                 .build();
     }

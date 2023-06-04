@@ -63,4 +63,11 @@ public class CustomerReservationController {
                         .map(ReservationDto::from).collect(Collectors.toList())
         );
     }
+
+    @ApiOperation(value = "고객의 리뷰 완료")
+    @PutMapping("/reviewed")
+    public ResponseEntity<Void> reviewedReservation(@RequestParam Long rvId) {
+        customerService.setReviewedReservation(rvId);
+        return ResponseEntity.ok().build();
+    }
 }

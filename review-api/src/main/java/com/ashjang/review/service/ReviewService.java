@@ -1,8 +1,8 @@
 package com.ashjang.review.service;
 
 import com.ashjang.review.client.UserClient;
-import com.ashjang.review.domain.AddReviewForm;
-import com.ashjang.review.domain.ReservationDto;
+import com.ashjang.review.domain.dto.AddReviewForm;
+import com.ashjang.review.domain.dto.ReservationDto;
 import com.ashjang.review.domain.model.Review;
 import com.ashjang.review.domain.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +20,20 @@ public class ReviewService {
 
     // 고객 - 리뷰 작성
     @Transactional
-    public String addReview(Long customerId, Long storeId, AddReviewForm form) {
-        reviewRepository.save(Review.from(form, customerId, storeId));
+    public String addReview(Long customerId, AddReviewForm form, Long rvId) {
+        reviewRepository.save(Review.from(form, customerId));
+        userClient.reviewedReservation(rvId);
         return "리뷰가 작성되었습니다.";
     }
 
     public boolean isUsed(String token, Long storeId) {
         List<ReservationDto> reservations = userClient.usedReservation(token).getBody();
+        if (reservations == null) {
+            return false;
+        }
+
         for (ReservationDto r : reservations) {
-            if (r.isUsedRv() && r.getStoreId() == storeId) {
+            if (!r.isReviewed() && r.isUsedRv() && r.getStoreId().equals(storeId)) {
                 return true;
             }
         }

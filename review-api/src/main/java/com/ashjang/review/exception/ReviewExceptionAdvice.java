@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
-public class ReservationExceptionAdvice {
+public class ReviewExceptionAdvice {
     @ExceptionHandler({
             CustomException.class
     })

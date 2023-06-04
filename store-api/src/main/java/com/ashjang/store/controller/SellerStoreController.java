@@ -49,7 +49,25 @@ public class SellerStoreController {
     @DeleteMapping
     public ResponseEntity<Void> deleteStore(@RequestHeader(name = "X-AUTH-TOKEN") String token,
                                             @RequestParam Long storeId) {
-        sellerStoreService.deleteStore(jwtProvider.getUserVo(token).getUserId(), storeId);
+        UserVo userVo = jwtProvider.getUserVo(token);
+        if (!userVo.getUserType().equals("SELLER")) {
+            throw new CustomException(ErrorCode.NO_ACCESS_USER);
+        }
+
+        sellerStoreService.deleteStore(userVo.getUserId(), storeId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<StoreDto> getStore(@RequestHeader(name = "X-AUTH-TOKEN") String token,
+                                             @RequestParam Long storeId) {
+        UserVo userVo = jwtProvider.getUserVo(token);
+        if (!userVo.getUserType().equals("SELLER")) {
+            throw new CustomException(ErrorCode.NO_ACCESS_USER);
+        }
+
+        return ResponseEntity.ok(
+                StoreDto.from(sellerStoreService.getStore(userVo.getUserId(), storeId))
+        );
     }
 }

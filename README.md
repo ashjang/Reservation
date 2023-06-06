@@ -37,4 +37,4 @@ project - reservation
 
 ## 리뷰 서버
 ### 사용자
-- [ ] 리뷰 작성
+- [x] 리뷰 작성
